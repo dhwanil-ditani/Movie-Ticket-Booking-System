@@ -1,4 +1,4 @@
-class Layout {
+public class Layout {
 
     public static void exit() throws InterruptedException {
         clearScreen();

@@ -1,4 +1,4 @@
-class User {
+public class User {
     private String mail_id, ph_no, addr;
 
     public String getMail_id() {

@@ -1,0 +1,10 @@
+[Now Showing]
+Joker,Housefull 4,
+
+[Coming Soon]
+
+
+[Timings]
+Joker 12:00 PM SCR1
+Joker 02:00 PM SCR2
+Housefull4 1:00 PM SCR3

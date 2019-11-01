@@ -1,6 +1,12 @@
 public class ticket{
+    
+    String movieName;
+    String movieTime;
+    String seatNumber;
+    double moviePrice;
+    
     void bookTicket(){
-
+    
     }
 
     void cancelTicket(){
@@ -8,6 +14,5 @@ public class ticket{
     }
 
     public static void main(){
-        
     }
 }

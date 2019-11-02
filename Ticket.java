@@ -6,7 +6,8 @@ public class Ticket {
     String movieTime;
     String seatNumber;
     double moviePrice;
-
+    User user;
+    
     public String getMovieName() {
         return movieName;
     }

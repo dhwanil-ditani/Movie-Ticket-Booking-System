@@ -19,7 +19,6 @@ public class Layout {
 
     public static void start() throws InterruptedException {
         clearScreen();
-        
         displayEstelle();
         System.out.println("Loading...");
         processBar();

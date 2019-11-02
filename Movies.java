@@ -34,4 +34,15 @@ public class Movies{
         in.close();
         return s;
     }
+
+    static String[] dates() throws Exception{
+        File f = new File("./dates.txt");
+        FileInput in = new FileInput(f);
+        String[] s;
+        //while(in.ready()) {
+            s = in.readline().trim().split("[:]");
+        //}
+        in.close();
+        return s;
+    }
 }

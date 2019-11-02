@@ -12,7 +12,7 @@ public class Main {
         //do{
             Layout.displayEstelle();
 
-            System.out.println("1. Booking a ticket.");
+            System.out.println("1. Book a ticket.");
             System.out.println("__________________________");
             System.out.println();
             
@@ -21,7 +21,7 @@ public class Main {
             System.out.println();
 
             System.out.println("3. Check out the movies coming soon to our screens.");
-            System.out.println("__________________________________________");
+            System.out.println("_________________________________________________________");
             System.out.println();
 
             System.out.println("4. Exit.");

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class User {
@@ -36,7 +37,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean auth(String username, String password) throws Exception {
+    public boolean auth(String username, String password) throws IOException {
         File f = new File("./Accounts.txt");
         FileInput in = new FileInput(f);
         String[] data;
@@ -57,22 +58,49 @@ public class User {
                         setPassword(temp[1]);
                 }
             }
-        }while(getUsername() != username || getPassword() != password);
+        }while((getUsername() != username || getPassword() != password) && in.ready());
         in.close();
-        return true;
+        if(getUsername() == username && getPassword() == password) {
+            return true;
+        }
+        else {
+            this.username = null;
+            this.mail_id = null;
+            this.password = null;
+            this.ph_no = null;
+            return false;
+        }
     }
 
-    public void login() throws Exception {
+    public boolean login() throws Exception {
+        Layout.clearScreen();
+        Layout.displayEstelle();
+        System.out.println("\t\tLogin\t\t");
         Scanner in = new Scanner(System.in);
         System.out.print("Enter your username: ");
         String username = in.nextLine();
         System.out.print("Enter your password: ");
         String password = in.nextLine();
-        auth(username, password);
-        in.close();
+        if(auth(username, password)) {
+            System.out.println("Login Successfull");
+            in.close();
+            return true;
+        }
+        else {
+            System.out.println("Login Failed!");
+            System.out.print("Login Again?[y/n]");
+            char choice = in.next().charAt(0);
+            in.close();
+            if(choice == 'y') {
+                return login();
+            }
+            else {
+                return false;
+            }
+        }
     }
 
-    public void signup() {
-        
+    public void signUp() {
+
     }
 }

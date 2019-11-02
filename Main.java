@@ -21,7 +21,7 @@ public class Main {
             System.out.println();
 
             System.out.println("3. Check out the movies coming soon to our screens.");
-            System.out.println("__________________________________________");
+            System.out.println("_________________________________________________________");
             System.out.println();
 
             System.out.println("4. Exit.");

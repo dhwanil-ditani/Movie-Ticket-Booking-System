@@ -20,7 +20,7 @@ public class Main {
             System.out.println("__________________________");
             System.out.println();
 
-            System.out.println("3. Check out the movies coming soon.");
+            System.out.println("3. Check out the movies coming soon to our screens.");
             System.out.println("__________________________________________");
             System.out.println();
 

@@ -7,18 +7,17 @@ public class Ticket {
     String movieDate;
     String seatNumber;
     double moviePrice;
-    char ch;
     User user;
 
     public String getMovieName() {
         return movieName;
     }
 
-    public boolean setMovieName(String movieName) throws Exception {
+    public boolean setMovieName(int ch) throws Exception {
         String movies[] = Movies.nowShowing();
         for (int i = 0; i < movies.length; i++) {
-            if (movieName.equalsIgnoreCase(movies[i].substring(3))) {
-                this.movieName = movieName;
+            if ((ch+48) == movies[i].charAt(0)) {
+                this.movieName = movies[i].substring(3);
                 return true;
             }
         }
@@ -89,15 +88,17 @@ public class Ticket {
         System.out.println("__________________");
         System.out.println();
         
-        Layout.print(Movies.nowShowing());
+        Layout.printM2(Movies.nowShowing());
         
         Scanner input = new Scanner(System.in);
         String choice;
+        char ch1;
+        int ch2;
         
         do{
-            System.out.println("Choose a movie (enter the name of the desired movie): ");
-            choice = input.nextLine();
-        } while (!setMovieName(choice));
+            System.out.println("Choose a movie: ");
+            ch2 = input.nextInt();
+        } while (!setMovieName(ch2));
         
         Layout.clearScreen();
         
@@ -110,8 +111,8 @@ public class Ticket {
         
         do{
             System.out.println("Choose your preferred date for " + getMovieName() + " (enter the alphabet corresponding to preferred date): ");
-            ch = input.next().charAt(0);
-        } while (!setMovieDate(ch));
+            ch1 = input.next().charAt(0);
+        } while (!setMovieDate(ch1));
 
         System.out.println();
         Layout.print(Movies.timings(getMovieName()));

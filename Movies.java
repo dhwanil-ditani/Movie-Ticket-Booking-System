@@ -5,7 +5,7 @@ public class Movies{
     static String[] nowShowing() throws Exception {
         File f = new File("./NowShowing.txt");
         FileInput in = new FileInput(f);
-        String[] s = in.readline().trim().split("[,]");
+        String[] s = in.readline().trim().split("[/]");
         in.close();
         return s;
     }
@@ -38,10 +38,7 @@ public class Movies{
     static String[] dates() throws Exception{
         File f = new File("./dates.txt");
         FileInput in = new FileInput(f);
-        String[] s;
-        //while(in.ready()) {
-            s = in.readline().trim().split("[:]");
-        //}
+        String[] s = in.readline().trim().split("[:]");
         in.close();
         return s;
     }

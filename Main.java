@@ -45,7 +45,7 @@ public class Main {
                     Layout.clearScreen();
                     Layout.displayEstelle();
                     System.out.println();
-                    Layout.print(Movies.comingSoon());
+                    Layout.printM2(Movies.comingSoon());
                     break;
 
                 case 4:

@@ -59,4 +59,13 @@ public class Layout {
         System.out.println("Ph_no: "+user.getPh_no());
         System.out.println("MailId: "+user.getMail_id());
     }
+
+    public static void printM2(String[] str) {
+        for(int i=0; i<str.length; i++) {
+            System.out.println(str[i]);
+
+            if (i > 0 && (i+1) % 4 == 0 || (i == 0 || i % 4 == 0))
+                System.out.println();
+        }
+    }
 }

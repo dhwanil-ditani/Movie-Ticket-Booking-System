@@ -28,7 +28,8 @@ public class Main {
             System.out.println("______________");
             System.out.println();
 
-	        choice = in.nextInt();
+            System.out.println("Enter your choice:");
+            choice = in.nextInt();
 
 	        switch(choice){
                 case 1:

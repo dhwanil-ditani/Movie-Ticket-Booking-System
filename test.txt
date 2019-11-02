@@ -1,8 +1,8 @@
 [Now Showing]
-Joker,Housefull 4,
+Joker,Housefull 4,Made in China,Terminator:Dark Fate,War
 
 [Coming Soon]
-
+Jumanji: The Next Level,Spice in Disguise
 
 [Timings]
 Joker 12:00 PM SCR1

@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Ticket{
     
     String movieName;
@@ -6,43 +7,20 @@ public class Ticket{
     String seatNumber;
     double moviePrice;
 
-    
-    
-    void bookTicket(){
-        Layout.print(Movies.nowShowing());
-        Scanner input = new Scanner(System.in);
-        System.out.print("Select the Movie: ");
-        String choice;
-        do{
-            choice = input.nextLine();
-        }while(!setMovieName(choice));
-        Layout.print(Movies.timings(choice));
-        System.out.print("Select the time: ");
-        do{
-            choice = input.nextLine();
-        }while(!setMovieTime(choice));
-
-        input.close();
-    }
-
-    void cancelTicket(){
-
-    }
-
     public String getMovieName() {
         return movieName;
     }
 
-    public boolean setMovieName(String movieName) {
+    public boolean setMovieName(String movieName) throws Exception {
         String movies[] = Movies.nowShowing();
         for(int i=0; i<movies.length; i++) {
-            if(movieName.equals(movie[i])) {
+            if(movieName.equalsIgnoreCase(movies[i])) {
                 this.movieName = movieName;
                 return true;
             }
-            System.out.println("Movie Does Not Exist.");
-            return false;
         }
+        System.out.println("Invalid Entry!");
+        return false;
     }
 
     public String getMovieTime() {
@@ -67,5 +45,30 @@ public class Ticket{
 
     public void setMoviePrice(double moviePrice) {
         this.moviePrice = moviePrice;
+    }
+
+    void bookTicket() throws Exception {
+        System.out.println("Now Showing Movies");
+        Layout.print(Movies.nowShowing());
+        Scanner input = new Scanner(System.in);
+        String choice;
+        do{
+            System.out.print("Select the Movie: ");
+            choice = input.nextLine();
+            System.out.flush();
+        }while(!setMovieName(choice));
+        Layout.clearScreen();
+        System.out.println("Movie: " + getMovieName());
+
+        //Layout.print(Movies.timings(choice));
+        //System.out.print("Select the time: ");
+        //do{
+        //    choice = input.nextLine();
+        //}while(!setMovieTime(choice));
+        input.close();
+    }
+
+    void cancelTicket(){
+
     }
 }

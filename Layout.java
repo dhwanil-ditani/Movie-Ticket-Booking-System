@@ -53,4 +53,10 @@ public class Layout {
             System.out.println();
         }
     }
+
+    public static void print(User user) throws NullPointerException {
+        System.out.println("Name: "+user.getUsername());
+        System.out.println("Ph_no: "+user.getPh_no());
+        System.out.println("MailId: "+user.getMail_id());
+    }
 }

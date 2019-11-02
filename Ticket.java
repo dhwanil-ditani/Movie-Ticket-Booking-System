@@ -7,7 +7,7 @@ public class Ticket {
     String seatNumber;
     double moviePrice;
     User user;
-    
+
     public String getMovieName() {
         return movieName;
     }
@@ -99,7 +99,27 @@ public class Ticket {
         System.out.println("Tickets booked! Thank you for choosing Estelle!");
         System.out.println("Movie: " + getMovieName());
         System.out.println("Showtime: " + getMovieTime());
+        System.out.print("\n\n");
+        Layout.processBar();
         
+        try {
+            user.auth(user.getUsername(), user.getPassword());
+        }
+        catch(NullPointerException e) {
+            user = new User();
+            if(!user.login()) {
+                user = null;
+            }
+        }
+        try {
+            Layout.print(user);
+            System.out.println("Movie: " + getMovieName());
+            System.out.println("Showtime: " + getMovieTime());
+        }
+        catch(NullPointerException e) {
+            System.out.println("Booking Failed");
+        }
+
         input.close();
     }
 

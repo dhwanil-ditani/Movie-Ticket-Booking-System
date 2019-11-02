@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class User {
     private String mail_id, ph_no, username, password;
 
+    public final Scanner scan = new Scanner(System.in);
+
     public String getMail_id() {
         return mail_id;
     }
@@ -43,6 +45,9 @@ public class User {
         String[] data;
         String[] temp;
         do {
+            if(!in.ready()) {
+                break;
+            }
             data = in.readline().trim().split(" ");
             for(int i=0; i<data.length; i++) {
                 temp = data[i].trim().split("[:]");
@@ -58,9 +63,9 @@ public class User {
                         setPassword(temp[1]);
                 }
             }
-        }while((getUsername() != username || getPassword() != password) && in.ready());
+        }while(!getUsername().equals(username) || !getPassword().equals(password));
         in.close();
-        if(getUsername() == username && getPassword() == password) {
+        if(getUsername().equals(username) && getPassword().equals(password)) {
             return true;
         }
         else {
@@ -76,21 +81,18 @@ public class User {
         Layout.clearScreen();
         Layout.displayEstelle();
         System.out.println("\t\tLogin\t\t");
-        Scanner in = new Scanner(System.in);
         System.out.print("Enter your username: ");
-        String username = in.nextLine();
+        String username = scan.nextLine();
         System.out.print("Enter your password: ");
-        String password = in.nextLine();
+        String password = scan.nextLine();
         if(auth(username, password)) {
             System.out.println("Login Successfull");
-            in.close();
             return true;
         }
         else {
             System.out.println("Login Failed!");
             System.out.print("Login Again?[y/n]");
-            char choice = in.next().charAt(0);
-            in.close();
+            char choice = scan.nextLine().charAt(0);
             if(choice == 'y') {
                 return login();
             }

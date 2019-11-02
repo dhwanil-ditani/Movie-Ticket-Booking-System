@@ -1,16 +1,27 @@
 public class Layout {
+    public static void displayEstelle(){
+        System.out.println("███████╗███████╗████████╗███████╗██╗     ██╗     ███████╗");
+        System.out.println("██╔════╝██╔════╝╚══██╔══╝██╔════╝██║     ██║     ██╔════╝");
+        System.out.println("█████╗  ███████╗   ██║   █████╗  ██║     ██║     █████╗  ");
+        System.out.println("██╔══╝  ╚════██║   ██║   ██╔══╝  ██║     ██║     ██╔══╝  ");
+        System.out.println("███████╗███████║   ██║   ███████╗███████╗███████╗███████╗");
+        System.out.println("╚══════╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚══════╝");
+        System.out.println();
+    }
 
     public static void exit() throws InterruptedException {
         clearScreen();
-        System.out.println("Exiting...............");
+        displayEstelle();
+        System.out.println("Exiting....");
         processBar();
         clearScreen();
     }
 
     public static void start() throws InterruptedException {
         clearScreen();
-        System.out.println("Estelle");
-        System.out.println("Loading:");
+        
+        displayEstelle();
+        System.out.println("Loading...");
         processBar();
         clearScreen();
     }
@@ -27,7 +38,7 @@ public class Layout {
                     System.out.print("-");
             }
             System.out.print("]");
-            Thread.sleep(50);
+            Thread.sleep(25);
             System.out.print("\r");
         }
     }
@@ -40,6 +51,7 @@ public class Layout {
     public static void print(String[] str) {
         for(int i=0; i<str.length; i++) {
             System.out.println(str[i]);
+            System.out.println();
         }
     }
 }

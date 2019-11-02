@@ -19,7 +19,9 @@ public class Ticket {
                 return true;
             }
         }
-        System.out.println("Invalid Entry!");
+        System.out.println();
+        System.out.println("Invalid Entry! Please try again.");
+        System.out.println();
         return false;
     }
 
@@ -36,7 +38,9 @@ public class Ticket {
                 return true;
             }
         }
-        System.out.println("Invalid Entry!");
+        System.out.println();
+        System.out.println("Invalid Entry! Please try again.");
+        System.out.println();
         return false;
     }
 
@@ -58,24 +62,43 @@ public class Ticket {
 
     void bookTicket() throws Exception {
         Layout.clearScreen();
-        System.out.println("Now Showing Movies");
+        
+        Layout.displayEstelle();
+        System.out.println("Now Showing.");
+        System.out.println("__________________");
+        System.out.println();
+        
         Layout.print(Movies.nowShowing());
-        System.out.flush();
+        
         Scanner input = new Scanner(System.in);
         String choice;
+        
         do{
-            System.out.print("Select the Movie: ");
+            System.out.print("Choose a movie: ");
             choice = input.nextLine();
-        }while(!setMovieName(choice));
+        } while (!setMovieName(choice));
+        
         Layout.clearScreen();
-        System.out.println("Movie: " + getMovieName());
+        
+        Layout.displayEstelle();
+        System.out.println("Showtimes for " + getMovieName() + ".");
+        System.out.println("_____________________________________");
+        System.out.println();
+
         Layout.print(Movies.timings(getMovieName()));
-        System.out.print("Select the time: ");
+        
         do{
+            System.out.print("Choose your preferred showtime for " + getMovieName() + ": ");
             choice = input.nextLine();
-        }while(!setMovieTime(choice));
+        } while (!setMovieTime(choice));
+        
+        Layout.clearScreen();
+        
+        Layout.displayEstelle();
+        System.out.println("Tickets booked! Thank you for choosing Estelle!");
         System.out.println("Movie: " + getMovieName());
-        System.out.println("Time: " + getMovieTime());
+        System.out.println("Showtime: " + getMovieTime());
+        
         input.close();
     }
 

@@ -50,6 +50,7 @@ public class Ticket{
     void bookTicket() throws Exception {
         System.out.println("Now Showing Movies");
         Layout.print(Movies.nowShowing());
+        System.out.flush();
         Scanner input = new Scanner(System.in);
         String choice;
         do{

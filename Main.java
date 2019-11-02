@@ -26,7 +26,7 @@ public class Main {
                 t.cancelTicket();
                 break;
             case 3:
-                Movies.comingSoon();
+                Layout.print(Movies.comingSoon());
             default:
                 break;
         }

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class Ticket{
-    
+public class Ticket {
+
     String movieName;
     String movieTime;
     String seatNumber;
@@ -13,8 +13,8 @@ public class Ticket{
 
     public boolean setMovieName(String movieName) throws Exception {
         String movies[] = Movies.nowShowing();
-        for(int i=0; i<movies.length; i++) {
-            if(movieName.equalsIgnoreCase(movies[i])) {
+        for (int i = 0; i < movies.length; i++) {
+            if (movieName.equalsIgnoreCase(movies[i])) {
                 this.movieName = movieName;
                 return true;
             }
@@ -27,8 +27,17 @@ public class Ticket{
         return movieTime;
     }
 
-    public void setMovieTime(String movieTime) {
-        this.movieTime = movieTime;
+    public boolean setMovieTime(String movieTime) throws Exception {
+        String[] timings;
+        timings = Movies.timings(getMovieName());
+        for(int i=0; i<timings.length; i++) {
+            if(movieTime.equalsIgnoreCase(timings[i])) {
+                this.movieTime = movieTime;
+                return true;
+            }
+        }
+        System.out.println("Invalid Entry!");
+        return false;
     }
 
     public String getSeatNumber() {
@@ -48,6 +57,7 @@ public class Ticket{
     }
 
     void bookTicket() throws Exception {
+        Layout.clearScreen();
         System.out.println("Now Showing Movies");
         Layout.print(Movies.nowShowing());
         System.out.flush();
@@ -56,16 +66,16 @@ public class Ticket{
         do{
             System.out.print("Select the Movie: ");
             choice = input.nextLine();
-            System.out.flush();
         }while(!setMovieName(choice));
         Layout.clearScreen();
         System.out.println("Movie: " + getMovieName());
-
-        //Layout.print(Movies.timings(choice));
-        //System.out.print("Select the time: ");
-        //do{
-        //    choice = input.nextLine();
-        //}while(!setMovieTime(choice));
+        Layout.print(Movies.timings(getMovieName()));
+        System.out.print("Select the time: ");
+        do{
+            choice = input.nextLine();
+        }while(!setMovieTime(choice));
+        System.out.println("Movie: " + getMovieName());
+        System.out.println("Time: " + getMovieTime());
         input.close();
     }
 

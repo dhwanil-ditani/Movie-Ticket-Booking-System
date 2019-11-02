@@ -38,7 +38,6 @@ public class Layout {
     }
 
     public static void print(String[] str) {
-        clearScreen();
         for(int i=0; i<str.length; i++) {
             System.out.println(str[i]);
         }

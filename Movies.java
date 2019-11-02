@@ -18,7 +18,20 @@ public class Movies{
         return s;
     }
 
-    static void timings(String movie) throws Exception{
-        
+    static String[] timings(String movie) throws Exception{
+        File f = new File("./Timing.txt");
+        FileInput in = new FileInput(f);
+        String[] s;
+        String str = "";
+        String[] temp;
+        while(in.ready()) {
+            temp = in.readline().trim().split(" ");
+            if(temp[0].equalsIgnoreCase(movie)) {
+                str = str.concat(temp[1] + " ");
+            }
+        }
+        s = str.trim().split(" ");
+        in.close();
+        return s;
     }
 }

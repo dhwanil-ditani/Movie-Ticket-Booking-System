@@ -9,6 +9,9 @@ public class Ticket {
     double moviePrice;
     User user;
 
+    public final Scanner input = new Scanner(System.in);
+
+
     public String getMovieName() {
         return movieName;
     }
@@ -97,7 +100,7 @@ public class Ticket {
         
         do{
             System.out.println("Choose a movie: ");
-            ch2 = input.nextInt();
+            ch2 = Integer.parseInt(input.nextLine());
         } while (!setMovieName(ch2));
         
         Layout.clearScreen();
@@ -111,7 +114,7 @@ public class Ticket {
         
         do{
             System.out.println("Choose your preferred date for " + getMovieName() + " (enter the alphabet corresponding to preferred date): ");
-            ch1 = input.next().charAt(0);
+            ch1 = input.nextLine().charAt(0);
         } while (!setMovieDate(ch1));
 
         System.out.println();
@@ -119,7 +122,6 @@ public class Ticket {
         
         do{
             System.out.println("Choose your preferred showtime for " + getMovieName() + ": ");
-            choice = input.nextLine();
             choice = input.nextLine();
         } while (!setMovieTime(choice));
         
@@ -132,14 +134,29 @@ public class Ticket {
         System.out.println("Showtime: " + getMovieTime());
         System.out.print("\n\n");
         Layout.processBar();
+
+        Layout.clearScreen();
+        Layout.displayEstelle();
         
         try {
             user.auth(user.getUsername(), user.getPassword());
         }
         catch(NullPointerException e) {
             user = new User();
-            if(!user.login()) {
-                user = null;
+            System.out.println("1. Login.");
+            System.out.println("2. Sign.");
+            System.out.print("Enter your choice: ");
+            choice = input.nextLine();
+            if(choice.equals("1")) {
+                if(!user.login()) {
+                    user = null;
+                }
+            }
+            else if(choice.equals("2")) {
+                user.signUp();
+            }
+            else {
+                System.out.println("Invalid Input");
             }
         }
         try {
@@ -150,8 +167,6 @@ public class Ticket {
         catch(NullPointerException e) {
             System.out.println("Booking Failed");
         }
-
-        input.close();
     }
 
     void cancelTicket(){

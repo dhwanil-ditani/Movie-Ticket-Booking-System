@@ -1,15 +1,17 @@
 import java.util.Scanner;
 
 public class Main {
+
+    public static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) throws Exception {
         int choice;
         Ticket t;
 
-        Scanner in = new Scanner(System.in);
-
         Layout.start();
         
-        //do{
+        do{
+            Layout.clearScreen();
             Layout.displayEstelle();
 
             System.out.println("1. Book a ticket.");
@@ -29,7 +31,7 @@ public class Main {
             System.out.println();
 
             System.out.println("Enter your choice:");
-            choice = in.nextInt();
+            choice = Integer.parseInt(in.nextLine());
 
 	        switch(choice){
                 case 1:
@@ -58,7 +60,7 @@ public class Main {
                     System.out.println();
                     break;
             }
-        //} while (choice > 0 && choice < 5);
+        } while (choice != 4);
         in.close();
     }
 }

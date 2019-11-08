@@ -88,25 +88,34 @@ public class User {
     public boolean login() throws Exception {
         Layout.clearScreen();
         Layout.displayEstelle();
-        System.out.println("\t\tLogin\t\t");
+        
+        System.out.println("Login.");
+        System.out.println("____________");
+        
+        System.out.println();
         System.out.print("Enter your username: ");
         String username = scan.nextLine();
+        
+        System.out.println();
         System.out.print("Enter your password: ");
         char pwd[] = cnsle.readPassword();
         String password = new String(pwd);
         if(auth(username, password)) {
+            System.out.println();
             System.out.println("Login successfull!");
+            System.out.println();
             return true;
         }
         else {
-            System.out.println("Login failed!");
-            System.out.print("Login again? [y/n]");
+            System.out.println();            
+            System.out.println("Login failed! Login again? [y/n]");
             char choice = scan.nextLine().charAt(0);
             if(choice == 'y') {
                 return login();
             }
             else {
-                System.out.print("Sign up instead?[y/n]");
+                System.out.println();
+                System.out.print("Sign up instead? [y/n]");
                 choice = scan.nextLine().charAt(0);
                 if(choice == 'y') {
                     return signUp();
@@ -136,12 +145,15 @@ public class User {
 		
         String[] str = s.trim().split("\n");
         String username;
-		System.out.println("\t\tSign Up\t\t");
+		System.out.println("Create new account.");
+        System.out.println("_________________________");
         do {
+            System.out.println();
             System.out.print("Enter your username: ");
             username = scan.nextLine();
             for(int i=0; i<str.length; i++) {
                 if(str[i].split(" ")[0].equals("Username:".concat(username))) {
+                    System.out.println();
                     System.out.println("Username already exists! Please try a different username.");
                     username = null;
                     break;
@@ -153,6 +165,7 @@ public class User {
         int error;
         
         do {
+            System.out.println();
             System.out.print("Enter your phone number: ");
             error = 0;
             try {
@@ -163,22 +176,27 @@ public class User {
             }
         }while(error == 1);
 
+        System.out.println();
         System.out.print("Enter your e-mail: ");
         setMail_id(scan.nextLine());
         
         String password, confPass;
+        System.out.println();
         System.out.print("Enter your password: ");
         char pwd1[] = cnsle.readPassword();
         password = new String(pwd1);
         
         do {
             System.out.print("Re-enter your password for confirmation: ");
-            char pwd2[] = cnsle.readPassword();
-            confPass = new String(pwd2);
+            pwd1 = cnsle.readPassword();
+            confPass = new String(pwd1);
             if (password.equals(confPass))
                 setPassword(password);
-            else
+            else {
+                System.out.println();
                 System.out.println("Passwords do not match! Please try again.");
+                System.out.println();
+            }
         } while (!password.equals(confPass));
 
         FileWriter writer = new FileWriter(f);

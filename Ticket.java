@@ -126,17 +126,9 @@ public class Ticket {
         } while (!setMovieTime(choice));
         
         Layout.clearScreen();
-
         Layout.displayEstelle();
-        System.out.println("Tickets booked! Thank you for choosing Estelle!");
-        System.out.println("Movie: " + getMovieName());
-        System.out.println("Date: " + getMovieDate());
-        System.out.println("Showtime: " + getMovieTime());
-        System.out.print("\n\n");
-        Layout.processBar();
-
-        Layout.clearScreen();
-        Layout.displayEstelle();
+        System.out.println("Tickets almost booked! Login or sign up to confirm the tickets.");
+        System.out.println();
         
         try {
             user.auth(user.getUsername(), user.getPassword());
@@ -144,7 +136,9 @@ public class Ticket {
         catch(NullPointerException e) {
             user = new User();
             System.out.println("1. Login.");
-            System.out.println("2. Sign.");
+            System.out.println();
+            System.out.println("2. Sign up.");
+            System.out.println();
             System.out.print("Enter your choice: ");
             choice = input.nextLine();
             if(choice.equals("1")) {
@@ -156,16 +150,19 @@ public class Ticket {
                 user.signUp();
             }
             else {
-                System.out.println("Invalid Input");
+                System.out.println("Invalid input, please try again!");
             }
         }
         try {
+            System.out.println("Booking confirmed :) Thank you for choosing Estelle!");
+            System.out.println();
             Layout.print(user);
+            System.out.println();
             System.out.println("Movie: " + getMovieName());
             System.out.println("Showtime: " + getMovieTime());
         }
         catch(NullPointerException e) {
-            System.out.println("Booking Failed");
+            System.out.println("Booking failed! :(");
         }
     }
 

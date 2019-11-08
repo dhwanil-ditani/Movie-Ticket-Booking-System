@@ -2,10 +2,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileWriter;
+import java.io.Console;
 
 public class User {
     private String mail_id, username, password;
     private long ph_no;
+    Console cnsle = System.console();
 
     public final Scanner scan = new Scanner(System.in);
 
@@ -90,20 +92,21 @@ public class User {
         System.out.print("Enter your username: ");
         String username = scan.nextLine();
         System.out.print("Enter your password: ");
-        String password = scan.nextLine();
+        char pwd[] = cnsle.readPassword();
+        String password = new String(pwd);
         if(auth(username, password)) {
-            System.out.println("Login Successfull");
+            System.out.println("Login successfull!");
             return true;
         }
         else {
-            System.out.println("Login Failed!");
-            System.out.print("Login Again?[y/n]");
+            System.out.println("Login failed!");
+            System.out.print("Login again? [y/n]");
             char choice = scan.nextLine().charAt(0);
             if(choice == 'y') {
                 return login();
             }
             else {
-                System.out.print("SignUp Instead?[y/n]");
+                System.out.print("Sign up instead?[y/n]");
                 choice = scan.nextLine().charAt(0);
                 if(choice == 'y') {
                     return signUp();
@@ -133,22 +136,24 @@ public class User {
 		
         String[] str = s.trim().split("\n");
         String username;
-		System.out.println("\t\tSignUp\t\t");
+		System.out.println("\t\tSign Up\t\t");
         do {
             System.out.print("Enter your username: ");
             username = scan.nextLine();
             for(int i=0; i<str.length; i++) {
                 if(str[i].split(" ")[0].equals("Username:".concat(username))) {
-                    System.out.println("Username already exists.");
+                    System.out.println("Username already exists! Please try a different username.");
                     username = null;
                     break;
                 }
             }
             setUsername(username);
         }while(this.username == null);
+        
         int error;
+        
         do {
-            System.out.print("Enter your PhoneNo: ");
+            System.out.print("Enter your phone number: ");
             error = 0;
             try {
                 setPh_no(Long.parseLong(scan.nextLine()));
@@ -158,10 +163,23 @@ public class User {
             }
         }while(error == 1);
 
-        System.out.print("Enter your MailId: ");
+        System.out.print("Enter your e-mail: ");
         setMail_id(scan.nextLine());
-        System.out.print("Enter your Password: ");
-        setPassword(scan.nextLine());
+        
+        String password, confPass;
+        System.out.print("Enter your password: ");
+        char pwd1[] = cnsle.readPassword();
+        password = new String(pwd1);
+        
+        do {
+            System.out.print("Re-enter your password for confirmation: ");
+            char pwd2[] = cnsle.readPassword();
+            confPass = new String(pwd2);
+            if (password.equals(confPass))
+                setPassword(password);
+            else
+                System.out.println("Passwords do not match! Please try again.");
+        } while (!password.equals(confPass));
 
         FileWriter writer = new FileWriter(f);
 		writer.write(s + "\n");

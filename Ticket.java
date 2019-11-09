@@ -133,6 +133,7 @@ public class Ticket {
         try {
             user.auth(user.getUsername(), user.getPassword());
         }
+        
         catch(NullPointerException e) {
             user = new User();
             System.out.println("1. Login.");
@@ -153,6 +154,28 @@ public class Ticket {
                 System.out.println("Invalid input, please try again!");
             }
         }
+
+        Layout.clearScreen();
+        Layout.displayEstelle();
+        System.out.println("Payment.");
+        System.out.println("_______________");
+        System.out.println();
+        System.out.println("1. Credit Card.");
+        System.out.println();
+        System.out.println("2. Debit Card.");
+        System.out.println();
+        System.out.println("Choose you preferred option:");
+        ch2 = input.nextInt();
+        
+        if (ch2 == 1) {
+            CreditCard cc = new CreditCard();
+            cc.pay();
+        }
+        else {
+            DebitCard dc = new DebitCard();
+            dc.pay();
+        }
+
         try {
             System.out.println("Booking confirmed :) Thank you for choosing Estelle!");
             System.out.println();
@@ -162,6 +185,7 @@ public class Ticket {
             System.out.println("Showtime: " + getMovieTime());
             Layout.processBar();
         }
+        
         catch(NullPointerException e) {
             System.out.println("Booking failed! :(");
             Layout.processBar();

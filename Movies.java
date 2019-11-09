@@ -25,7 +25,7 @@ public class Movies{
         String str = "";
         String[] temp;
         while(in.ready()) {
-            temp = in.readline().trim().split(" ");
+            temp = in.readline().trim().split("/");
             if(temp[0].equalsIgnoreCase(movie)) {
                 str = str.concat(temp[1] + " ");
             }

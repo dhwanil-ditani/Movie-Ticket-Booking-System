@@ -91,7 +91,7 @@ public class Ticket {
         System.out.println("__________________");
         System.out.println();
         
-        Layout.printM2(Movies.nowShowing());
+        Layout.printMovies(Movies.nowShowing());
 
         
         String choice;
@@ -118,8 +118,10 @@ public class Ticket {
         } while (!setMovieDate(ch1));
 
         System.out.println();
-        Layout.print(Movies.timings(getMovieName()));
-        
+        Layout.printST(Movies.timings(getMovieName()));
+        System.out.println();
+        System.out.println();
+
         do{
             System.out.println("Choose your preferred showtime for " + getMovieName() + ": ");
             choice = input.nextLine();

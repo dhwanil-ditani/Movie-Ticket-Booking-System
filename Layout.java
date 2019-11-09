@@ -75,17 +75,23 @@ public class Layout {
     }
 
     public static void print(User user) throws NullPointerException {
-        System.out.println("Name: "+user.getUsername());
-        System.out.println("Ph_no: "+user.getPh_no());
-        System.out.println("MailId: "+user.getMail_id());
+        System.out.println("Name: " + user.getUsername());
+        System.out.println("Phone number: " + user.getPh_no());
+        System.out.println("E-mail ID: " + user.getMail_id());
     }
 
-    public static void printM2(String[] str) {
+    public static void printMovies(String[] str) {
         for(int i=0; i<str.length; i++) {
             System.out.println(str[i]);
 
             if (i > 0 && (i+1) % 4 == 0 || (i == 0 || i % 4 == 0))
                 System.out.println();
+        }
+    }
+
+    public static void printST(String[] str) {
+        for(int i=0; i<str.length; i++) {
+            System.out.print(str[i] + "    ");
         }
     }
 

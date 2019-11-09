@@ -53,7 +53,7 @@ public class Main {
                     Layout.clearScreen();
                     Layout.displayEstelle();
                     System.out.println();
-                    Layout.printM2(Movies.comingSoon());
+                    Layout.printMovies(Movies.comingSoon());
                     System.out.print("Press Enter to go back to main menu.");
                     in.nextLine();
                     break;

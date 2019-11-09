@@ -35,7 +35,7 @@ public class Layout {
             System.out.print("[");
             for(int j = 0; j<50; j++)
             {
-                if( j <= i)
+                if(j <= i)
                     System.out.print("*");
                 else
                     System.out.print("-");
@@ -45,7 +45,23 @@ public class Layout {
             System.out.print("\r");
         }
     }
-
+    
+    public static void process() {
+        char ani[] = {'|', '/', '-', '\\'};
+        
+        for(int i = 0; i<20; i++)
+        {
+            System.out.print("Processing payment...  ["+ ani[i % 4] + "]\r");
+            
+            try {
+                Thread.sleep(200);
+            } 
+            
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -100,17 +116,19 @@ public class Layout {
         char c;
         int i = 0;
 
-        while(reader.ready()) {
+        while (reader.ready()) {
             i++;
+            
             c = (char)reader.read();
+            
             if(c == '□') {
                 System.out.print("*");
             }
+            
             else {
                 System.out.print(c);
             }
         }
-
         reader.close();
     }
 }

@@ -92,8 +92,8 @@ public class Ticket {
         System.out.println();
         
         Layout.printM2(Movies.nowShowing());
+
         
-        Scanner input = new Scanner(System.in);
         String choice;
         char ch1;
         int ch2;

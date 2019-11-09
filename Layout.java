@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Layout {
     public static void displayEstelle(){
         System.out.println("███████╗███████╗████████╗███████╗██╗     ██╗     ███████╗");
@@ -67,5 +71,25 @@ public class Layout {
             if (i > 0 && (i+1) % 4 == 0 || (i == 0 || i % 4 == 0))
                 System.out.println();
         }
+    }
+
+    public static void printSeats(String movie) throws IOException {
+        File f = new File("./seats.txt");
+        FileReader reader = new FileReader(f);
+        char c;
+        int i = 0;
+
+        while(reader.ready()) {
+            i++;
+            c = (char)reader.read();
+            if(c == '□') {
+                System.out.print("*");
+            }
+            else {
+                System.out.print(c);
+            }
+        }
+
+        reader.close();
     }
 }

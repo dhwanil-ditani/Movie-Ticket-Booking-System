@@ -4,12 +4,12 @@ import java.io.IOException;
 
 public class Layout {
     public static void displayEstelle(){
-        System.out.println("███████╗███████╗████████╗███████╗██╗     ██╗     ███████╗");
-        System.out.println("██╔════╝██╔════╝╚══██╔══╝██╔════╝██║     ██║     ██╔════╝");
-        System.out.println("█████╗  ███████╗   ██║   █████╗  ██║     ██║     █████╗  ");
-        System.out.println("██╔══╝  ╚════██║   ██║   ██╔══╝  ██║     ██║     ██╔══╝  ");
-        System.out.println("███████╗███████║   ██║   ███████╗███████╗███████╗███████╗");
-        System.out.println("╚══════╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚══════╝");
+        System.out.println("███████╗███████╗████████╗███████╗██╗     ██╗     ███████╗ C");
+        System.out.println("██╔════╝██╔════╝╚══██╔══╝██╔════╝██║     ██║     ██╔════╝ i");
+        System.out.println("█████╗  ███████╗   ██║   █████╗  ██║     ██║     █████╗   n");
+        System.out.println("██╔══╝  ╚════██║   ██║   ██╔══╝  ██║     ██║     ██╔══╝   e");
+        System.out.println("███████╗███████║   ██║   ███████╗███████╗███████╗███████╗ m");
+        System.out.println("╚══════╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚══════╝ a");
         System.out.println();
     }
 

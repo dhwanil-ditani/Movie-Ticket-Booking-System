@@ -85,7 +85,7 @@ public class User {
         }
     }
 
-    public boolean login() throws Exception {
+    public boolean login() throws IOException {
         Layout.clearScreen();
         Layout.displayEstelle();
         

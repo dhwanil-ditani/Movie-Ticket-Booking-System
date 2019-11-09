@@ -64,6 +64,27 @@ public class Layout {
         System.out.println("MailId: "+user.getMail_id());
     }
 
+    public static void print(Ticket[] t) {
+        for(int i=0; i<t.length; i++) {
+            System.out.println();
+            System.out.println();
+            System.out.println("Ticket: "+ i+1);
+            Layout.print(t[i].user);
+            System.out.println();
+            System.out.println("Movie: " + t[i].getMovieName());
+            System.out.println("Showtime: " + t[i].getMovieTime());
+            System.out.println("Date: " + t[i].getMovieDate());
+            System.out.println("Price: " + t[i].getMoviePrice());
+            System.out.println("SeatNo: " + t[i].getMovieName());
+        }
+    }
+
+    public static void print(Ticket t) {
+        Ticket tickets[] = new Ticket[1];
+        tickets[0] = t;
+        print(tickets);
+    }
+
     public static void printM2(String[] str) {
         for(int i=0; i<str.length; i++) {
             System.out.println(str[i]);

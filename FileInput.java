@@ -22,4 +22,14 @@ public class FileInput extends FileReader {
         return str;
     }
 
+    public String readFile() throws IOException {
+        String s = "";
+		char c;
+        while(ready()) {
+            c = (char)read();
+            s = s.concat(String.valueOf(c));
+        }
+        return s;
+    }
+
 }

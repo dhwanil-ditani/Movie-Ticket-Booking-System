@@ -185,11 +185,16 @@ public class Ticket {
             System.out.println();
             System.out.println("Movie: " + getMovieName());
             System.out.println("Showtime: " + getMovieTime());
-            Layout.processBar();
+            System.out.println();
+            System.out.println("Press Enter to go back to the main menu. ");
+            input.nextLine();
         }
         
         catch(NullPointerException e) {
             System.out.println("Booking failed! :(");
+            System.out.println();
+            System.out.println("Press Enter to go back to the main menu. ");
+            input.nextLine();
             Layout.processBar();
         }
     }

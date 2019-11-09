@@ -188,6 +188,7 @@ public class Ticket {
             System.out.println();
             System.out.println("Press Enter to go back to the main menu. ");
             input.nextLine();
+            input.nextLine();
         }
         
         catch(NullPointerException e) {
@@ -195,7 +196,7 @@ public class Ticket {
             System.out.println();
             System.out.println("Press Enter to go back to the main menu. ");
             input.nextLine();
-            Layout.processBar();
+            input.nextLine();
         }
     }
 

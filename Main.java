@@ -52,9 +52,11 @@ public class Main {
                 case 3:
                     Layout.clearScreen();
                     Layout.displayEstelle();
+                    System.out.println("Coming soon.");
+                    System.out.println("________________");
                     System.out.println();
-                    Layout.printM2(Movies.comingSoon());
-                    System.out.print("Press Enter to go back to main menu.");
+                    Layout.printMovies(Movies.comingSoon());
+                    System.out.println("Press Enter to go back to the main menu. ");
                     in.nextLine();
                     break;
 

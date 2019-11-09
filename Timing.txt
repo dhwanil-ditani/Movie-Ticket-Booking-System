@@ -1,3 +1,25 @@
-Joker 12:00PM SCR1
-Joker 02:00PM SCR2
-Housefull4 1:00PM SCR3
+Ujda Chaman/9:30AM/Screen 4
+Housefull 4/09:45AM/Screen 3
+Bala/10:30AM/Screen 1
+Terminator: Dark Fate/10:15AM/Screen 2
+Bala/11:45PM/Screen 4
+Bala/12:30PM/Screen 2
+Ujda Chaman/12:30PM/Screen 3
+Housefull 4/01:00PM/Screen 1
+Terminator: Dark Fate/02:15PM/Screen 4
+Ujda Chaman/02:45PM/Screen 3
+Bala/03:00PM/Screen 2
+Ujda Chaman/03:45PM/Screen 1
+Housefull 4/04:45PM/Screen 4
+Bala/05:00PM/Screen 3
+Terminator: Dark Fate/05:30PM/Screen 2
+Bala/06:45PM/Screen 1
+Joker/07:15PM/Screen 4
+Bala/07:15AM/Screen 3
+Ujda Chaman/08:00PM/Screen 2
+Bala/09:00PM/Screen 1
+Ujda Chaman/09:30PM/Screen 4
+Housefull 4/09:45PM/Screen 3
+Terminator: Dark Fate/10:15PM/Screen 2
+Ujda Chaman/11:30PM/Screen 1
+Joker/11:45PM/Screen 4

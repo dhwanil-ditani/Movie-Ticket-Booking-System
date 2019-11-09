@@ -4,12 +4,12 @@ import java.io.IOException;
 
 public class Layout {
     public static void displayEstelle(){
-        System.out.println("███████╗███████╗████████╗███████╗██╗     ██╗     ███████╗");
-        System.out.println("██╔════╝██╔════╝╚══██╔══╝██╔════╝██║     ██║     ██╔════╝");
-        System.out.println("█████╗  ███████╗   ██║   █████╗  ██║     ██║     █████╗  ");
-        System.out.println("██╔══╝  ╚════██║   ██║   ██╔══╝  ██║     ██║     ██╔══╝  ");
-        System.out.println("███████╗███████║   ██║   ███████╗███████╗███████╗███████╗");
-        System.out.println("╚══════╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚══════╝");
+        System.out.println("███████╗███████╗████████╗███████╗██╗     ██╗     ███████╗ C");
+        System.out.println("██╔════╝██╔════╝╚══██╔══╝██╔════╝██║     ██║     ██╔════╝ i");
+        System.out.println("█████╗  ███████╗   ██║   █████╗  ██║     ██║     █████╗   n");
+        System.out.println("██╔══╝  ╚════██║   ██║   ██╔══╝  ██║     ██║     ██╔══╝   e");
+        System.out.println("███████╗███████║   ██║   ███████╗███████╗███████╗███████╗ m");
+        System.out.println("╚══════╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚══════╝╚══════╝ a");
         System.out.println();
     }
 
@@ -75,11 +75,12 @@ public class Layout {
     }
 
     public static void print(User user) throws NullPointerException {
-        System.out.println("Name: "+user.getUsername());
-        System.out.println("Ph_no: "+user.getPh_no());
-        System.out.println("MailId: "+user.getMail_id());
+        System.out.println("Name: " + user.getUsername());
+        System.out.println("Phone number: " + user.getPh_no());
+        System.out.println("E-mail ID: " + user.getMail_id());
     }
 
+<<<<<<< HEAD
     public static void print(Ticket[] t) {
         for(int i=0; i<t.length; i++) {
             System.out.println();
@@ -102,11 +103,20 @@ public class Layout {
     }
 
     public static void printM2(String[] str) {
+=======
+    public static void printMovies(String[] str) {
+>>>>>>> 0f49bc76122616ec885ba6429ab518ceef6277f4
         for(int i=0; i<str.length; i++) {
             System.out.println(str[i]);
 
             if (i > 0 && (i+1) % 4 == 0 || (i == 0 || i % 4 == 0))
                 System.out.println();
+        }
+    }
+
+    public static void printST(String[] str) {
+        for(int i=0; i<str.length; i++) {
+            System.out.print(str[i] + "    ");
         }
     }
 

@@ -80,7 +80,6 @@ public class Layout {
         System.out.println("E-mail ID: " + user.getMail_id());
     }
 
-<<<<<<< HEAD
     public static void print(Ticket[] t) {
         for(int i=0; i<t.length; i++) {
             System.out.println();
@@ -102,10 +101,7 @@ public class Layout {
         print(tickets);
     }
 
-    public static void printM2(String[] str) {
-=======
     public static void printMovies(String[] str) {
->>>>>>> 0f49bc76122616ec885ba6429ab518ceef6277f4
         for(int i=0; i<str.length; i++) {
             System.out.println(str[i]);
 

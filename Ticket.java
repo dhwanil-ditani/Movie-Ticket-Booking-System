@@ -94,13 +94,8 @@ public class Ticket {
         System.out.println("Now Showing.");
         System.out.println("__________________");
         System.out.println();
-<<<<<<< HEAD
-
-        Layout.printM2(Movies.nowShowing());
-=======
         
         Layout.printMovies(Movies.nowShowing());
->>>>>>> 0f49bc76122616ec885ba6429ab518ceef6277f4
 
         String choice;
         char ch1;
@@ -127,17 +122,11 @@ public class Ticket {
         } while (!setMovieDate(ch1));
 
         System.out.println();
-<<<<<<< HEAD
-        Layout.print(Movies.timings(getMovieName()));
-
-        do {
-=======
         Layout.printST(Movies.timings(getMovieName()));
         System.out.println();
         System.out.println();
 
         do{
->>>>>>> 0f49bc76122616ec885ba6429ab518ceef6277f4
             System.out.println("Choose your preferred showtime for " + getMovieName() + ": ");
             choice = input.nextLine();
         } while (!setMovieTime(choice));

@@ -160,9 +160,11 @@ public class Ticket {
             System.out.println();
             System.out.println("Movie: " + getMovieName());
             System.out.println("Showtime: " + getMovieTime());
+            Layout.processBar();
         }
         catch(NullPointerException e) {
             System.out.println("Booking failed! :(");
+            Layout.processBar();
         }
     }
 

@@ -31,7 +31,12 @@ public class Main {
             System.out.println();
 
             System.out.println("Enter your choice:");
-            choice = Integer.parseInt(in.nextLine());
+            try {
+                choice = Integer.parseInt(in.nextLine());
+            }
+            catch(NumberFormatException e) {
+                choice = 0;
+            }
 
 	        switch(choice){
                 case 1:
@@ -49,15 +54,15 @@ public class Main {
                     Layout.displayEstelle();
                     System.out.println();
                     Layout.printM2(Movies.comingSoon());
+                    System.out.print("Press Enter to go back to main menu.");
+                    in.nextLine();
                     break;
 
                 case 4:
                     Layout.exit();
                     break;
                 
-                default: 
-                    System.out.println("Invalid Entry! Please try again.");
-                    System.out.println();
+                default:
                     break;
             }
         } while (choice != 4);

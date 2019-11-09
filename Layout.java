@@ -69,7 +69,7 @@ public class Layout {
 
     public static void print(String[] str) {
         for(int i=0; i<str.length; i++) {
-            System.out.println(str[i]);
+            System.out.println(i+1 + ". " + str[i]);
             System.out.println();
         }
     }
@@ -101,12 +101,12 @@ public class Layout {
         print(tickets);
     }
 
-    public static void printMovies(String[] str) {
-        for(int i=0; i<str.length; i++) {
-            System.out.println(str[i]);
-
-            if (i > 0 && (i+1) % 4 == 0 || (i == 0 || i % 4 == 0))
-                System.out.println();
+    public static void print(Movies[] movies) {
+        for(int i=0; i<movies.length; i++) {
+            System.out.println(i+1 + ". " + movies[i].movieName);
+            System.out.println();
+            System.out.println(movies[i].movieDescription);
+            System.out.println();
         }
     }
 

@@ -1,1 +1,8 @@
-a. Thursday, 14th November:b. Friday, 15th November:c. Saturday, 16th November:d. Sunday, 15th November:e. Monday, 17th November:f. Tuesday, 18th November:g. Wednesday, 19th November:h. Thursday, 20th November
+a. Thursday, 14th November
+b. Friday, 15th November
+c. Saturday, 16th November
+d. Sunday, 15th November
+e. Monday, 17th November
+f. Tuesday, 18th November
+g. Wednesday, 19th November
+h. Thursday, 20th November

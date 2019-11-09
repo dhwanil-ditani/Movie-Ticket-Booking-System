@@ -1,8 +1,8 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Ticket {
@@ -20,11 +20,11 @@ public class Ticket {
         return movieName;
     }
 
-    public boolean setMovieName(int ch) throws Exception {
-        String movies[] = Movies.nowShowing();
+    public boolean setMovieName(String movieName) throws IOException {
+        Movies movies[] = Movies.nowShowing();
         for (int i = 0; i < movies.length; i++) {
-            if ((ch + 48) == movies[i].charAt(0)) {
-                this.movieName = movies[i].substring(3);
+            if (movieName.equals(movies[i].movieName)) {
+                this.movieName = movies[i].movieName;
                 return true;
             }
         }
@@ -38,7 +38,7 @@ public class Ticket {
         return movieTime;
     }
 
-    public boolean setMovieTime(String movieTime) throws Exception {
+    public boolean setMovieTime(String movieTime) throws IOException {
         String[] timings;
         timings = Movies.timings(getMovieName());
         for (int i = 0; i < timings.length; i++) {
@@ -57,13 +57,10 @@ public class Ticket {
         return movieDate;
     }
 
-    public boolean setMovieDate(char ch) throws Exception {
-        String dates[] = Movies.dates();
-        for (int i = 0; i < dates.length; i++) {
-            if (ch == dates[i].charAt(0)) {
-                movieDate = dates[i].substring(3);
-                return true;
-            }
+    public boolean setMovieDate(String date) throws IOException {
+        if(Integer.parseInt(date.split(" ")[2]) >= Integer.parseInt(Calendar.getInstance().getTime().toString().split(" ")[2]) || Integer.parseInt(date.split(" ")[2]) <= Integer.parseInt(Calendar.getInstance().getTime().toString().split(" ")[2] + 6)) {
+            this.movieDate = date;
+            return true;
         }
         System.out.println();
         System.out.println("Invalid Entry! Please try again.");
@@ -87,7 +84,7 @@ public class Ticket {
         this.moviePrice = moviePrice;
     }
 
-    void bookTicket() throws Exception {
+    void bookTicket() throws IOException {
         Layout.clearScreen();
 
         Layout.displayEstelle();
@@ -95,16 +92,17 @@ public class Ticket {
         System.out.println("__________________");
         System.out.println();
         
-        Layout.printMovies(Movies.nowShowing());
+        Movies[] movies = Movies.nowShowing();
+        Layout.print(movies);
 
         String choice;
-        char ch1;
+        int ch1;
         int ch2;
 
         do {
             System.out.println("Choose a movie: ");
             ch2 = Integer.parseInt(input.nextLine());
-        } while (!setMovieName(ch2));
+        } while (!setMovieName(movies[ch2-1].movieName));
 
         Layout.clearScreen();
 
@@ -113,13 +111,14 @@ public class Ticket {
         System.out.println("_____________________________________");
         System.out.println();
 
-        Layout.print(Movies.dates());
+        String[] dates = Movies.dates();
+        Layout.print(dates);
 
         do {
             System.out.println("Choose your preferred date for " + getMovieName()
                     + " (enter the alphabet corresponding to preferred date): ");
-            ch1 = input.nextLine().charAt(0);
-        } while (!setMovieDate(ch1));
+            ch1 = Integer.parseInt(input.nextLine());
+        } while (!setMovieDate(dates[ch1 - 1]));
 
         System.out.println();
         Layout.printST(Movies.timings(getMovieName()));
@@ -200,46 +199,43 @@ public class Ticket {
         }
     }
 
-    static Ticket[] getTickets(String username, String password) {
+    static Ticket[] getTickets(String username, String password) throws IOException {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
         File f = new File("./tickets.txt");
         String[] data;
         String[] temp;
-        try(FileInput reader = new FileInput(f)) {
-            while(reader.ready()) {
-                Ticket t = new Ticket();
-                data = reader.readline().split("[;]");
-                for(int i=0; i<data.length; i++) {
-                    temp = data[i].split("[:]");
-                    switch(temp[0]) {
-                        case "Movie":
-                            t.setMovieName(temp[1]);
-                            break;
-                        case "Time":
-                            t.setMovieTime(temp[1]);
-                            break;
-                        case "Date":
-                            t.setMovieDate(temp[1]);
-                            break;
-                        case "SeatNo":
-                            t.setSeatNumber(temp[1]);
-                            break;
-                        case "Price":
-                            t.setMoviePrice(Double.parseDouble(temp[1]));
-                            break;
-                        case "Username":
-                            if(username.equals(temp[1])) {
-                                t.user.auth(username, password);
-                                tickets.add(t);
-                            }
-                            break;
-                    }
+        FileInput reader = new FileInput(f);
+        while(reader.ready()) {
+            Ticket t = new Ticket();
+            data = reader.readline().split("[;]");
+            for(int i=0; i<data.length; i++) {
+                temp = data[i].split("[:]");
+                switch(temp[0]) {
+                    case "Movie":
+                        t.setMovieName(temp[1]);
+                        break;
+                    case "Time":
+                        t.setMovieTime(temp[1]);
+                        break;
+                    case "Date":
+                        t.setMovieDate(temp[1]);
+                        break;
+                    case "SeatNo":
+                        t.setSeatNumber(temp[1]);
+                        break;
+                    case "Price":
+                        t.setMoviePrice(Double.parseDouble(temp[1]));
+                        break;
+                    case "Username":
+                        if(username.equals(temp[1])) {
+                            t.user.auth(username, password);
+                            tickets.add(t);
+                        }
+                        break;
                 }
             }
         }
-        catch(FileNotFoundException e1) {
-            f.createNewFile();
-        }
+        reader.close();
         return (Ticket[])tickets.toArray();
     }
 

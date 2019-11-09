@@ -55,7 +55,7 @@ public class Main {
                     System.out.println("Coming soon.");
                     System.out.println("________________");
                     System.out.println();
-                    Layout.printMovies(Movies.comingSoon());
+                    Layout.print(Movies.comingSoon());
                     System.out.println("Press Enter to go back to the main menu. ");
                     in.nextLine();
                     break;

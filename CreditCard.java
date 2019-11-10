@@ -9,7 +9,7 @@ class CreditCard extends Payment{
         int cvv;
 
         System.out.println();
-        System.out.println("Payment of ₹. " + price + "through Credit Card.");
+        System.out.println("Payment of ₹. " + price + " through Credit Card.");
         System.out.println("_____________________________________________________");
 
         System.out.println();

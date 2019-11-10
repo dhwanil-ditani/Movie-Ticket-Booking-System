@@ -9,7 +9,7 @@ class DebitCard extends Payment{
         int cvv;
 
         System.out.println();
-        System.out.println("Payment ₹. " + price + "through Debit Card.");
+        System.out.println("Payment ₹. " + price + " through Debit Card.");
         System.out.println("_________________________________________________");
         
         System.out.println();

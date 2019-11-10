@@ -4,13 +4,13 @@ class CreditCard extends Payment{
 
     public final Scanner input = new Scanner(System.in);
 
-    void pay(){
+    void pay(int price){
         long ccno;
         int cvv;
 
         System.out.println();
-        System.out.println("Payment through Credit Card");
-        System.out.println("_________________________________");
+        System.out.println("Payment of ₹. " + price + "through Credit Card.");
+        System.out.println("_____________________________________________________");
 
         System.out.println();
 

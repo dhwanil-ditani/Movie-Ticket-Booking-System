@@ -51,5 +51,5 @@ abstract class Payment {
         return this.CVV;
     }
     
-    abstract void pay();
+    abstract void pay(int price);
 }

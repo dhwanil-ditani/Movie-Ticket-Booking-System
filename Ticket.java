@@ -171,11 +171,11 @@ public class Ticket {
         
         if (ch2 == 1) {
             CreditCard cc = new CreditCard();
-            cc.pay();
+            cc.pay(200);
         }
         else {
             DebitCard dc = new DebitCard();
-            dc.pay();
+            dc.pay(200);
         }
 
         try {

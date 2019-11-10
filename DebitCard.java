@@ -4,13 +4,13 @@ class DebitCard extends Payment{
 
     public final Scanner input = new Scanner(System.in);
 
-    void pay() {
+    void pay(int price) {
         long dcno;
         int cvv;
 
         System.out.println();
-        System.out.println("Payment through Debit Card");
-        System.out.println("_________________________________");
+        System.out.println("Payment ₹. " + price + "through Debit Card.");
+        System.out.println("_________________________________________________");
         
         System.out.println();
         

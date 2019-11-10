@@ -84,7 +84,7 @@ public class Layout {
         for(int i=0; i<t.length; i++) {
             System.out.println();
             System.out.println();
-            System.out.println("Ticket: "+ i+1);
+            System.out.println("Ticket: "+ (i+1));
             Layout.print(t[i].user);
             System.out.println();
             System.out.println("Movie: " + t[i].getMovieName());

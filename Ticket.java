@@ -29,7 +29,7 @@ public class Ticket {
             }
         }
         System.out.println();
-        System.out.println("Invalid Entry! Please try again.");
+        System.out.println("Invalid Movie Name! Please try again.");
         System.out.println();
         return false;
     }
@@ -48,7 +48,7 @@ public class Ticket {
             }
         }
         System.out.println();
-        System.out.println("Invalid Entry! Please try again.");
+        System.out.println("Invalid Time! Please try again.");
         System.out.println();
         return false;
     }
@@ -63,7 +63,7 @@ public class Ticket {
             return true;
         }
         System.out.println();
-        System.out.println("Invalid Entry! Please try again.");
+        System.out.println("Invalid Date! Please try again.");
         System.out.println();
         return false;
     }
@@ -186,6 +186,16 @@ public class Ticket {
             System.out.println("Movie: " + getMovieName());
             System.out.println("Showtime: " + getMovieTime());
             System.out.println();
+
+            File f = new File("tickets.txt");
+            FileInput reader = new FileInput(f);
+            String data = reader.readFile();
+            reader.close();
+            System.out.println(data);
+            FileWriter writer = new FileWriter(f);
+            writer.write(data + "\n");
+            writer.write(getMovieName()+";"+getMovieTime()+";"+getMovieDate()+";"+getSeatNumber()+";"+getMoviePrice()+";"+user.getUsername()+";");
+            writer.close();
             System.out.println("Press Enter to go back to the main menu. ");
             input.nextLine();
             input.nextLine();
@@ -243,9 +253,11 @@ public class Ticket {
         int choice;
         Ticket[] tickets;
         String[] data;
+        String[] t;
+        String temp = "";
+
         File f = new File("./tickets.txt");
         FileInput reader = new FileInput(f);
-        FileWriter writer = new FileWriter(f);
 
         try {
             user.auth(user.getUsername(), user.getPassword());
@@ -270,16 +282,39 @@ public class Ticket {
                 System.out.println("Invalid input, please try again!");
             }
         }
-
+        data = reader.readFile().split("\n");
+        for(int i=0; i<data.length; i++) {
+            if(data[i].split(";")[5].equals(user.getUsername())) {
+                temp = temp.concat(data[i] + "\n");
+            }
+        }
+        System.out.println(temp);
+        reader.close();
+        t = temp.split("\n");
+        System.out.print(t.length);
+        tickets = new Ticket[t.length];
+        for(int i=0; i<t.length; i++) {
+            tickets[i] = new Ticket();
+            tickets[i].setMovieName(t[i].split(";")[0]);
+            tickets[i].setMovieTime(t[i].split(";")[1]);
+            tickets[i].setMovieDate(t[i].split(";")[2]);
+            tickets[i].setSeatNumber(t[i].split(";")[3]);
+            tickets[i].setMoviePrice(Double.parseDouble(t[i].split(";")[4]));
+            tickets[i].user = user;
+        }
         Layout.clearScreen();
         Layout.displayEstelle();
-        tickets = getTickets(user.getUsername(), user.getPassword());
         Layout.print(tickets);
         System.out.println();
         do {
             System.out.print("Enter your choice: ");
             try {
                 choice = Integer.parseInt(input.nextLine());
+                setMovieName(tickets[choice - 1].getMovieName());
+                setMovieTime(tickets[choice - 1].getMovieTime());
+                setMovieDate(tickets[choice - 1].getMovieDate());
+                setMoviePrice(tickets[choice - 1].getMoviePrice());
+                setSeatNumber(tickets[choice - 1].getSeatNumber());
             }
             catch(NumberFormatException e) {
                 choice = 0;
@@ -292,11 +327,9 @@ public class Ticket {
         Layout.displayEstelle();
         Layout.print(tickets[choice-1]);
         System.out.println("Cancellation successful!");
-
-        data = reader.readFile().split("\n");
-        reader.close();
+        FileWriter writer = new FileWriter(f);
         for(int i=0; i<data.length; i++) {
-            if(data[i].equals("Movie:"+getMovieName()+";Time:"+getMovieTime()+";Date:"+getMovieDate()+";SeatNo:"+getSeatNumber()+";Price:"+getMoviePrice()+";Username:"+user.getUsername()+";")) {
+            if(data[i].equals(getMovieName()+";"+getMovieTime()+";"+getMovieDate()+";"+getSeatNumber()+";"+getMoviePrice()+";"+user.getUsername()+";")) {
                 continue;
             }
             else {
@@ -304,5 +337,7 @@ public class Ticket {
             }
         }
         writer.close();
+        input.nextLine();
     }
 }
+//Joker;11:45PM;Sun Nov 10 2019;A4;200.0;dhwanil-ditani;

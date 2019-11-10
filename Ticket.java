@@ -116,7 +116,7 @@ public class Ticket {
 
         do {
             System.out.println("Choose your preferred date for " + getMovieName()
-                    + " (enter the alphabet corresponding to preferred date): ");
+                    + " (enter number corresponding to preferred date): ");
             ch1 = Integer.parseInt(input.nextLine());
         } while (!setMovieDate(dates[ch1 - 1]));
 

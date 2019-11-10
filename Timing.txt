@@ -15,11 +15,11 @@ Bala/05:00PM/Screen 3
 Terminator: Dark Fate/05:30PM/Screen 2
 Bala/06:45PM/Screen 1
 Joker/07:15PM/Screen 4
-Bala/07:15AM/Screen 3
+Bala/07:30PM/Screen 3
 Ujda Chaman/08:00PM/Screen 2
 Bala/09:00PM/Screen 1
 Ujda Chaman/09:30PM/Screen 4
-Housefull 4/09:45PM/Screen 3
+Housefull 4/10:00PM/Screen 3
 Terminator: Dark Fate/10:15PM/Screen 2
 Ujda Chaman/11:30PM/Screen 1
 Joker/11:45PM/Screen 4

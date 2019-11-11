@@ -100,9 +100,16 @@ public class Ticket {
         int ch2;
 
         do {
+            System.out.println();
             System.out.println("Choose a movie: ");
             ch2 = Integer.parseInt(input.nextLine());
-        } while (!setMovieName(movies[ch2-1].movieName));
+                if (ch2 < 0 || ch2 > movies.length) {
+                        System.out.println();
+                        System.out.println("Invalid input! Please try again.");
+                    }
+                    else
+                        setMovieName(movies[ch2-1].movieName);
+        } while ((ch2 < 0 || ch2 > movies.length));
 
         Layout.clearScreen();
 
@@ -115,18 +122,23 @@ public class Ticket {
         Layout.print(dates);
 
         do {
-            System.out.println("Choose your preferred date for " + getMovieName()
-                    + " (enter number corresponding to preferred date): ");
-            ch1 = Integer.parseInt(input.nextLine());
-        } while (!setMovieDate(dates[ch1 - 1]));
+            System.out.println();
+            System.out.println("Choose your preferred date for " + getMovieName() + " (enter number corresponding to preferred date): ");
+            ch2 = Integer.parseInt(input.nextLine());
+            if (ch2 < 0 || ch2 > dates.length) {
+                System.out.println();
+                System.out.println("Invalid input! Please try again.");
+            }
+            else
+                setMovieDate(dates[ch2-1]);
+        } while (ch2 < 0 || ch2 > dates.length);
 
         System.out.println();
+        System.out.println("Choose your preferred showtime for " + getMovieName() + ": ");
         Layout.printST(Movies.timings(getMovieName()));
-        System.out.println();
         System.out.println();
 
         do{
-            System.out.println("Choose your preferred showtime for " + getMovieName() + ": ");
             choice = input.nextLine();
         } while (!setMovieTime(choice));
 

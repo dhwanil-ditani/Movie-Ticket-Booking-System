@@ -11,7 +11,7 @@ public class Ticket {
     String movieTime;
     String movieDate;
     String seatNumber;
-    double moviePrice;
+    double moviePrice = 200.0;
     User user;
 
     public final Scanner input = new Scanner(System.in);
@@ -167,15 +167,19 @@ public class Ticket {
         System.out.println("2. Debit Card.");
         System.out.println();
         System.out.println("Choose you preferred option:");
-        ch2 = input.nextInt();
+        do {
+            ch2 = input.nextInt();
+            if (ch2 > 2 || ch2 <= 0) 
+                System.out.println("Invalid Entry! Please try again.");
+        } while (ch2 > 2 || ch2 <= 0);
         
         if (ch2 == 1) {
             CreditCard cc = new CreditCard();
-            cc.pay(200);
+            cc.pay(moviePrice);
         }
         else {
             DebitCard dc = new DebitCard();
-            dc.pay(200);
+            dc.pay(moviePrice);
         }
 
         try {
@@ -191,10 +195,9 @@ public class Ticket {
             FileInput reader = new FileInput(f);
             String data = reader.readFile();
             reader.close();
-            System.out.println(data);
             FileWriter writer = new FileWriter(f);
-            writer.write(data + "\n");
-            writer.write(getMovieName()+";"+getMovieTime()+";"+getMovieDate()+";"+getSeatNumber()+";"+getMoviePrice()+";"+user.getUsername()+";");
+            writer.write(data);
+            writer.write(getMovieName()+";"+getMovieTime()+";"+getMovieDate()+";"+getSeatNumber()+";"+getMoviePrice()+";"+user.getUsername()+"\n");
             writer.close();
             System.out.println("Press Enter to go back to the main menu. ");
             input.nextLine();
@@ -250,6 +253,11 @@ public class Ticket {
     }
 
     void cancelTicket() throws IOException {
+        Layout.clearScreen();
+        Layout.displayEstelle();
+        System.out.println("Cancellation.");
+        System.out.println("____________________");
+        System.out.println();
         int choice;
         Ticket[] tickets;
         String[] data;
@@ -288,56 +296,62 @@ public class Ticket {
                 temp = temp.concat(data[i] + "\n");
             }
         }
-        System.out.println(temp);
         reader.close();
-        t = temp.split("\n");
-        System.out.print(t.length);
-        tickets = new Ticket[t.length];
-        for(int i=0; i<t.length; i++) {
-            tickets[i] = new Ticket();
-            tickets[i].setMovieName(t[i].split(";")[0]);
-            tickets[i].setMovieTime(t[i].split(";")[1]);
-            tickets[i].setMovieDate(t[i].split(";")[2]);
-            tickets[i].setSeatNumber(t[i].split(";")[3]);
-            tickets[i].setMoviePrice(Double.parseDouble(t[i].split(";")[4]));
-            tickets[i].user = user;
+        if(temp.equals("")) {
+            System.out.println("No booked tickets found for " + user.getUsername() + ".");
+            input.nextLine();
         }
-        Layout.clearScreen();
-        Layout.displayEstelle();
-        Layout.print(tickets);
-        System.out.println();
-        do {
-            System.out.print("Enter your choice: ");
-            try {
-                choice = Integer.parseInt(input.nextLine());
-                setMovieName(tickets[choice - 1].getMovieName());
-                setMovieTime(tickets[choice - 1].getMovieTime());
-                setMovieDate(tickets[choice - 1].getMovieDate());
-                setMoviePrice(tickets[choice - 1].getMoviePrice());
-                setSeatNumber(tickets[choice - 1].getSeatNumber());
+        else {
+            t = temp.split("\n");
+            System.out.print(t.length);
+            tickets = new Ticket[t.length];
+            for(int i=0; i<t.length; i++) {
+                tickets[i] = new Ticket();
+                tickets[i].setMovieName(t[i].split(";")[0]);
+                tickets[i].setMovieTime(t[i].split(";")[1]);
+                tickets[i].setMovieDate(t[i].split(";")[2]);
+                tickets[i].setSeatNumber(t[i].split(";")[3]);
+                tickets[i].setMoviePrice(Double.parseDouble(t[i].split(";")[4]));
+                tickets[i].user = user;
             }
-            catch(NumberFormatException e) {
-                choice = 0;
-            }
-            System.out.print("\r");
-        }while(choice <= 0 || choice > tickets.length);
-        System.out.println();
+            Layout.clearScreen();
+            Layout.displayEstelle();
+            Layout.print(tickets);
+            System.out.println();
+            do {
+                System.out.print("Enter your choice: ");
+                try {
+                    choice = Integer.parseInt(input.nextLine());
+                    setMovieName(tickets[choice - 1].getMovieName());
+                    setMovieTime(tickets[choice - 1].getMovieTime());
+                    setMovieDate(tickets[choice - 1].getMovieDate());
+                    setMoviePrice(tickets[choice - 1].getMoviePrice());
+                    setSeatNumber(tickets[choice - 1].getSeatNumber());
+                }
+                catch(NumberFormatException e) {
+                    choice = 0;
+                }
+                System.out.print("\r");
+            }while(choice <= 0 || choice > tickets.length);
+            System.out.println();
 
-        Layout.clearScreen();
-        Layout.displayEstelle();
-        Layout.print(tickets[choice-1]);
-        System.out.println("Cancellation successful!");
-        FileWriter writer = new FileWriter(f);
-        for(int i=0; i<data.length; i++) {
-            if(data[i].equals(getMovieName()+";"+getMovieTime()+";"+getMovieDate()+";"+getSeatNumber()+";"+getMoviePrice()+";"+user.getUsername()+";")) {
-                continue;
+            Layout.clearScreen();
+            Layout.displayEstelle();
+            Layout.print(tickets[choice-1]);
+            System.out.println("Cancellation successful!");
+            FileWriter writer = new FileWriter(f);
+    
+            for(int i=0; i<data.length; i++) {
+                if(data[i].equals(getMovieName()+";"+getMovieTime()+";"+getMovieDate()+";"+getSeatNumber()+";"+getMoviePrice()+";"+user.getUsername())) {
+                    continue;
+                }
+                else {
+                    writer.write(data[i]+"\n");
+                }
             }
-            else {
-                writer.write(data[i] + "\n");
-            }
+            writer.close();
+            input.nextLine();
         }
-        writer.close();
-        input.nextLine();
-    }
+    }       
 }
 //Joker;11:45PM;Sun Nov 10 2019;A4;200.0;dhwanil-ditani;

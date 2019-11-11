@@ -1,7 +1,7 @@
 abstract class Payment {
-    long CardNumber;
-    String CardholderName;
-    int CVV;
+    private long CardNumber;
+    private String CardholderName;
+    private int CVV;
     
     void setCardholderName(String CardHolderName) {
         this.CardholderName = CardHolderName;
@@ -51,5 +51,5 @@ abstract class Payment {
         return this.CVV;
     }
     
-    abstract void pay(int price);
+    abstract void pay(double price);
 }

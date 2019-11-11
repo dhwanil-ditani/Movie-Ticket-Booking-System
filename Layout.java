@@ -83,7 +83,6 @@ public class Layout {
     public static void print(Ticket[] t) {
         for(int i=0; i<t.length; i++) {
             System.out.println();
-            System.out.println();
             System.out.println("Ticket: "+ (i+1));
             Layout.print(t[i].user);
             System.out.println();
@@ -96,9 +95,14 @@ public class Layout {
     }
 
     public static void print(Ticket t) {
-        Ticket tickets[] = new Ticket[1];
-        tickets[0] = t;
-        print(tickets);
+        System.out.println();
+        Layout.print(t.user);
+        System.out.println();
+        System.out.println("Movie: " + t.getMovieName());
+        System.out.println("Showtime: " + t.getMovieTime());
+        System.out.println("Date: " + t.getMovieDate());
+        System.out.println("Price: " + t.getMoviePrice());
+        System.out.println("SeatNo: " + t.getMovieName());
     }
 
     public static void print(Movies[] movies) {

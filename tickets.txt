@@ -1,3 +1,2 @@
-Joker;11:45PM;Sun Nov 10 2019;A4;200.0;dhwanil-ditani;
-
-Bala;10:30am;Fri Nov 15 2019;null;0.0;dh711;
+Ujda Chaman;9:30am;Mon Nov 11 2019;null;0.0;dh
+Joker;07:15pm;Mon Nov 11 2019;null;200.0;dh

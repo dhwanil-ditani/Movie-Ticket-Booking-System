@@ -102,7 +102,7 @@ public class User {
         String password = new String(pwd);
         if(auth(username, password)) {
             System.out.println();
-            System.out.println("Login successfull!");
+            System.out.println("Login successful!");
             System.out.println();
             return true;
         }

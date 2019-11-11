@@ -4,7 +4,7 @@ class DebitCard extends Payment{
 
     public final Scanner input = new Scanner(System.in);
 
-    void pay(int price) {
+    void pay(double price) {
         long dcno;
         int cvv;
 
@@ -34,7 +34,7 @@ class DebitCard extends Payment{
 
         Layout.process();
         System.out.println();
-        System.out.println("Payment coomplete!");
+        System.out.println("Payment complete!");
         System.out.println();
     }
 }

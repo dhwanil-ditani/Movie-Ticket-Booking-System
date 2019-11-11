@@ -4,7 +4,7 @@ class CreditCard extends Payment{
 
     public final Scanner input = new Scanner(System.in);
 
-    void pay(int price){
+    void pay(double price){
         long ccno;
         int cvv;
 
